@@ -73,8 +73,6 @@ class App extends Component {
     const time = setInterval(() => {
         if(this.state.resetStatus === false){
           timer--;
-
-
           this.setState({focusTime:timer})
         }
         
@@ -99,13 +97,13 @@ class App extends Component {
       this.setState({status: true}, ()=> console.log(this.state.status))
 
 
-      this.startTimerFocus(this.state.focusTime, this.state.focusTime)
+      this.startTimerFocus(this.state.focusTime*60)
 
       setTimeout(()=>{
-        this.clockTickRest(this.state.restTime)
+        this.startTimerFocus(this.state.restTime)
         this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
 
-      }, this.state.focusTime*1000)
+      }, this.state.focusTime*60*1000)
 
     } else {
       this.setState({phase:'rest'}, ()=> console.log(this.state.phase))

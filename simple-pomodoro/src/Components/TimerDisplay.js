@@ -12,13 +12,14 @@ import React from 'react';
 
 
 const TimerDisplay = ({ focusTime, restTime, phase, statusLabel }) => {
-
+    
 
 
     let timerDisplay;
     if (phase === 'focus' & statusLabel === true) {
         let ft;
-        ft = focusTime * 60
+        ft = focusTime
+  
         let minutes;
         let seconds;
         minutes = parseInt(ft / 60, 10);
@@ -32,7 +33,7 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel }) => {
 
     } else if (phase === 'rest' & statusLabel === true) {
         let rT;
-        rT = restTime * 60
+        rT = restTime 
         let minutes;
         let seconds;
         minutes = parseInt(rT / 60, 10);
@@ -44,7 +45,8 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel }) => {
 
     } else {
         let fT;
-        fT = focusTime * 60
+        // fT = focusTime*60
+        fT = focusTime*60;
 
         let minutes;
         let seconds;

@@ -47,14 +47,12 @@ const PrettySlider = withStyles({
 
 const SliderInput = ({ focusTime, restTime }) => {
         // const classes = useStyles();
-        return ( <
-            div className = 'center w-75' >
-            <
-            Typography id = "discrete-slider"
+        return ( <div className = 'center w-75' >
+            <Typography 
+            id = "discrete-slider"
             gutterBottom className = 'white' >
-            Focus <
-            /Typography> <
-            PrettySlider defaultValue = { 25 }
+            Focus </Typography> 
+            <PrettySlider defaultValue = { 25 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
@@ -63,12 +61,12 @@ const SliderInput = ({ focusTime, restTime }) => {
             max = { 60 }
             onChange = { focusTime }
             // valueLabelDisplay="off"
-            /> <
-            Typography id = "discrete-slider"
+            /> 
+            <Typography id = "discrete-slider"
             gutterBottom className = 'white' >
-            Rest <
-            /Typography> <
-            PrettySlider defaultValue = { 5 }
+            Rest 
+            </Typography> 
+            <PrettySlider defaultValue = { 5 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
@@ -76,8 +74,7 @@ const SliderInput = ({ focusTime, restTime }) => {
             marks min = { 0 }
             max = { 30 }
             onChange = { restTime }
-            /> <
-            /div>)
+            /> </div>)
 
         }
 

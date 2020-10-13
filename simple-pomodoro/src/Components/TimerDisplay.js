@@ -11,12 +11,11 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel }) => {
         timerDisplay = focusTime
     }
 
-    return ( <
-        div className = 'tc bg-light-green br3 h5 pa4 ma3 w-90 center' >
-        <
-        h1 > TimerDisplay < /h1> <
-        h1 > { timerDisplay } < /h1> <
-        /div>
+    return ( 
+    <div className = 'tc bg-light-green br3 h5 pa4 ma3 w-90 center' >
+        <h1 > TimerDisplay </h1> 
+        <h1 > { timerDisplay } </h1> 
+    </div>
     )
 }
 

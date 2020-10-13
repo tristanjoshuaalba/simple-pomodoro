@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 // Components
-import Controller from './components/Controls';
-import SliderInput from './components/SliderInput';
-import TimerDisplay from './components/TimerDisplay';
+import Controller from './Components/Controls';
+import SliderInput from './Components/SliderInput';
+import TimerDisplay from './Components/TimerDisplay';
 
 // APP Class
 class App extends Component {

@@ -9,6 +9,9 @@ import TimerDisplay from './Components/TimerDisplay';
 class App extends Component {
   constructor() {
     super();
+
+
+
     this.state = {
       resetStatus: false,
       resetFocusTime: 25,
@@ -19,6 +22,7 @@ class App extends Component {
       phase: 'rest'
     }
     console.log(this.state)
+    // console.log(this.state.focusTime)
   }
 
   onfocusTimeChange = (event) => {
@@ -29,40 +33,62 @@ class App extends Component {
     this.setState({restTime: event.target.ariaValueNow, resetRestTime: event.target.ariaValueNow})
   }
 
-  clockTickFocus = (timeLeft) => {
-    const timer = setInterval(()=> {
-      timeLeft--;
-      if(this.state.resetStatus === false){
-        this.setState({focusTime:timeLeft})
-      }
+  // clockTickFocus = (timeLeft) => {
+  //   const timer = setInterval(()=> {
+  //     timeLeft--;
+  //     if(this.state.resetStatus === false){
+  //       this.setState({focusTime:timeLeft})
+  //     }
       
-      if(this.state.status === false | this.state.resetStatus === true){
-        clearInterval(timer);
-      }
+  //     if(this.state.status === false | this.state.resetStatus === true){
+  //       clearInterval(timer);
+  //     }
 
-      if(timeLeft<=0){
-        clearInterval(timer);
-      }
-    }, 1000);
-    }
+  //     if(timeLeft<=0){
+  //       clearInterval(timer);
+  //     }
+  //   }, 1000);
+  //   }
 
-   clockTickRest = (timeLeft) => {
-    const timer = setInterval(()=> {
-      timeLeft--;
-      if(this.state.resetStatus === false){
-        this.setState({restTime:timeLeft})
-      }
+  //  clockTickRest = (timeLeft) => {
+  //   const timer = setInterval(()=> {
+  //     timeLeft--;
+  //     if(this.state.resetStatus === false){
+  //       this.setState({restTime:timeLeft})
+  //     }
       
-      if(this.state.status === false | this.state.resetStatus === true){
-        clearInterval(timer);
-      }
+  //     if(this.state.status === false | this.state.resetStatus === true){
+  //       clearInterval(timer);
+  //     }
 
-      if(timeLeft<=0){
-        clearInterval(timer);
-      }
-    }, 1000);
-    }
+  //     if(timeLeft<=0){
+  //       clearInterval(timer);
+  //     }
+  //   }, 1000);
+  //   }
  
+  startTimerFocus = (duration) => {
+    let timer = duration, minutes, seconds;
+
+    const time = setInterval(() => {
+        if(this.state.resetStatus === false){
+          timer--;
+
+
+          this.setState({focusTime:timer})
+        }
+        
+        if(this.state.status === false | this.state.resetStatus === true){
+          clearInterval(time);
+        }
+
+        if(timer<=0){
+          clearInterval(time);
+        }
+      }, 1000);
+    }
+
+  // startTimer(timerDisplay, display)
 
   onButtonClick = () => {
 
@@ -73,7 +99,7 @@ class App extends Component {
       this.setState({status: true}, ()=> console.log(this.state.status))
 
 
-      this.clockTickFocus(this.state.focusTime)
+      this.startTimerFocus(this.state.focusTime, this.state.focusTime)
 
       setTimeout(()=>{
         this.clockTickRest(this.state.restTime)
@@ -86,6 +112,29 @@ class App extends Component {
       this.setState({status: false}, ()=> console.log(this.state.status))
     }
   }
+
+  // onButtonClick = () => {
+
+
+  //   if(this.state.status == false){
+
+  //     this.setState({phase:'focus'}, ()=> console.log(this.state.phase))
+  //     this.setState({status: true}, ()=> console.log(this.state.status))
+
+
+  //     this.clockTickFocus(this.state.focusTime)
+
+  //     setTimeout(()=>{
+  //       this.clockTickRest(this.state.restTime)
+  //       this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+
+  //     }, this.state.focusTime*1000)
+
+  //   } else {
+  //     this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+  //     this.setState({status: false}, ()=> console.log(this.state.status))
+  //   }
+  // }
 
   onResetClick = () => {
     if(this.state.resetStatus === false) {

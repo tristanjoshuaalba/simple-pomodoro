@@ -45,14 +45,45 @@ const PrettySlider = withStyles({
     },
 })(Slider);
 
-const SliderInput = ({ focusTime, restTime }) => {
-        // const classes = useStyles();
-        return ( <div className = 'center w-75' >
+const SliderInput = ({ focusTime, restTime , statusLabel}) => {
+        if(statusLabel === true){
+            return ( <div className = 'center w-75' >
             <Typography 
             id = "discrete-slider"
             gutterBottom className = 'white' >
             Focus </Typography> 
-            <PrettySlider defaultValue = { 25 }
+            <PrettySlider defaultValue = { 0.5 }
+            getAriaValueText = { valuetext }
+            aria-labelledby = "discrete-slider"
+            valueLabelDisplay = "auto"
+            step = { 0.5 }
+            marks min = { 0 }
+            max = { 60 }
+            onChange = { focusTime }
+            disabled
+            // valueLabelDisplay="off"
+            /> 
+            <Typography id = "discrete-slider"
+            gutterBottom className = 'white' >
+            Rest 
+            </Typography> 
+            <PrettySlider defaultValue = { 0.5 }
+            getAriaValueText = { valuetext }
+            aria-labelledby = "discrete-slider"
+            valueLabelDisplay = "auto"
+            step = { 0.5 }
+            marks min = { 0 }
+            max = { 30 }
+            onChange = { restTime }
+            disabled
+            /> </div>)
+        } else {
+            return ( <div className = 'center w-75' >
+            <Typography 
+            id = "discrete-slider"
+            gutterBottom className = 'white' >
+            Focus </Typography> 
+            <PrettySlider defaultValue = { 0.5 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
@@ -66,15 +97,20 @@ const SliderInput = ({ focusTime, restTime }) => {
             gutterBottom className = 'white' >
             Rest 
             </Typography> 
-            <PrettySlider defaultValue = { 5 }
+            <PrettySlider defaultValue = { 0.5 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
             step = { 0.5 }
-            marks min = { 1 }
+            marks min = { 0 }
             max = { 30 }
             onChange = { restTime }
             /> </div>)
+
+
+        }
+        
+        
 
         }
 

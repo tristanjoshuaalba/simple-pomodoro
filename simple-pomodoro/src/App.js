@@ -11,13 +11,13 @@ class App extends Component {
     super();
     this.state = {
       resetStatus: false,
-      resetFocusTime: 25,
-      resetRestTime: 5,
-      focusTime: 25,
-      restTime: 5,
+      resetFocusTime: 0.5,
+      resetRestTime: 0.5,
+      focusTime: 0.5,
+      restTime: 0.5,
       status: false,
       phase: 'rest',
-      displayTime: 25,
+      displayTime: 30,
       clicks: 0
     }
     console.log(this.state) 
@@ -107,7 +107,7 @@ class App extends Component {
       // this.setState({}, ()=> console.log(this.state.status))
 
       if(this.state.clicks <= 1){
-        this.startTimerFocus(this.state.focusTime*60, this.state.focusTime)
+        this.startTimerFocus(this.state.focusTime*60)
       console.log('FOCUS TIME: ', this.state.focusTime)
 
       } else {
@@ -117,7 +117,7 @@ class App extends Component {
       
 
       setTimeout(()=>{
-        this.startTimerFocus(this.state.restTime)
+        this.startTimerFocus(this.state.restTime*60)
         this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
 
       }, this.state.focusTime*60*1000)
@@ -155,9 +155,11 @@ class App extends Component {
 
   onResetClick = () => {
     if(this.state.resetStatus === false) {
+      this.setState({clicks:this.state.clicks+1})
+      this.setState({displayTime:this.state.focusTime})
       this.setState({resetStatus: true})
-      this.setState({focusTime: this.state.resetFocusTime})
-      this.setState({restTime: this.state.resetRestTime})
+      this.setState({focusTime: this.state.resetFocusTime*60})
+      this.setState({restTime: this.state.resetRestTime*60})
       this.setState({status: false})
     } 
     setTimeout(()=> {this.setState({resetStatus: false})}, 1000)
@@ -169,8 +171,8 @@ class App extends Component {
       <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
         <h1 className = 'f2 tc white pt3'>Pomodoro</h1>
         <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase} 
-        statusLabel = {this.state.status} displayTime = {this.state.displayTime}/>
-        <SliderInput focusTime = {this.onfocusTimeChange} restTime = {this.onrestTimeChange}/>
+        statusLabel = {this.state.status} displayTime = {this.state.displayTime} clicks = {this.state.clicks}/>
+        <SliderInput focusTime = {this.onfocusTimeChange} restTime = {this.onrestTimeChange} statusLabel = {this.state.status}/>
         <Controller status = {this.onButtonClick} reset = {this.onResetClick} statusLabel = {this.state.status}/>
       </div>
     )

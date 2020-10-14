@@ -11,7 +11,7 @@ import React from 'react';
 // let display = document.querySelector('#time');
 
 
-const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime }) => {
+const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, clicks}) => {
     
 
 
@@ -59,7 +59,12 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime }) 
         timerDisplay = minutes + ":" + seconds  
     } else {
         let ft;
-        ft = displayTime
+        if (clicks <= 1){
+            ft = focusTime*60
+        } else {
+            ft = focusTime
+        }
+        
         
   
         let minutes;
@@ -78,10 +83,10 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime }) 
 
     return ( 
     <div className = 'tc bg-light-green br3 h5 pa4 ma3 w-90 center' >
-        <h1> TimerDisplay </h1> 
-        <h1> {timerDisplay} </h1> 
-        <h2> {focusTime} </h2> 
-        <h2> {restTime} </h2>
+        {/* <h1> TimerDisplay </h1>  */}
+        <h1 className = 'f1'> {timerDisplay} </h1> 
+        <h3> {focusTime} </h3> 
+        <h3> {restTime} </h3>
     </div>
     )
 }

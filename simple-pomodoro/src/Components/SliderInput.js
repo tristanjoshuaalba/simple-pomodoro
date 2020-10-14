@@ -56,8 +56,8 @@ const SliderInput = ({ focusTime, restTime }) => {
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 5 }
-            marks min = { 5 }
+            step = { 0.5 }
+            marks min = { 0 }
             max = { 60 }
             onChange = { focusTime }
             // valueLabelDisplay="off"
@@ -70,8 +70,8 @@ const SliderInput = ({ focusTime, restTime }) => {
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 5 }
-            marks min = { 0 }
+            step = { 0.5 }
+            marks min = { 1 }
             max = { 30 }
             onChange = { restTime }
             /> </div>)

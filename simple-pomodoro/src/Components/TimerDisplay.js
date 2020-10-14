@@ -11,21 +11,22 @@ import React from 'react';
 // let display = document.querySelector('#time');
 
 
-const TimerDisplay = ({ focusTime, restTime, phase, statusLabel }) => {
+const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime }) => {
     
 
 
     let timerDisplay;
     if (phase === 'focus' & statusLabel === true) {
         let ft;
-        ft = focusTime
+        ft = displayTime
+        
   
         let minutes;
         let seconds;
         minutes = parseInt(ft / 60, 10);
         seconds = parseInt(ft % 60, 10);
 
-        console.log(minutes, seconds)
+        // console.log(minutes, seconds)
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -45,13 +46,28 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel }) => {
 
     } else if (phase === 'focus' & statusLabel === false) {
         let fT;
-        fT = focusTime
+        fT = displayTime
         // fT = focusTime;
 
         let minutes;
         let seconds;
         minutes = parseInt(focusTime / 60, 10);
         seconds = parseInt(focusTime % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerDisplay = minutes + ":" + seconds  
+    } else {
+        let ft;
+        ft = displayTime
+        
+  
+        let minutes;
+        let seconds;
+        minutes = parseInt(ft / 60, 10);
+        seconds = parseInt(ft % 60, 10);
+
+        // console.log(minutes, seconds)
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;

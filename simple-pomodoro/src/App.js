@@ -9,9 +9,6 @@ import TimerDisplay from './Components/TimerDisplay';
 class App extends Component {
   constructor() {
     super();
-
-
-
     this.state = {
       resetStatus: false,
       resetFocusTime: 25,
@@ -19,10 +16,11 @@ class App extends Component {
       focusTime: 25,
       restTime: 5,
       status: false,
-      phase: 'rest'
+      phase: 'rest',
+      displayTime: 25,
+      clicks: 0
     }
-    console.log(this.state)
-    // console.log(this.state.focusTime)
+    console.log(this.state) 
   }
 
   onfocusTimeChange = (event) => {
@@ -69,11 +67,21 @@ class App extends Component {
  
   startTimerFocus = (duration) => {
     let timer = duration, minutes, seconds;
+    let countDown = duration
 
     const time = setInterval(() => {
         if(this.state.resetStatus === false){
           timer--;
-          this.setState({focusTime:timer})
+          countDown--;
+          // this.setState({focusTime:timer})
+          this.setState({displayTime: timer})
+          if(this.state.status === true & this.state.phase === 'focus'){
+            this.setState({focusTime: countDown}, ()=>console.log('NEW FT: ', this.state.focusTime))
+          } else if(this.state.status === true & this.state.phase === 'rest') {
+            this.setState({restTime: countDown}, ()=>console.log('NEW RT: ', this.state.restTime))
+          }
+          
+
         }
         
         if(this.state.status === false | this.state.resetStatus === true){
@@ -90,14 +98,23 @@ class App extends Component {
 
   onButtonClick = () => {
 
+    this.setState({clicks:this.state.clicks+1}, ()=>console.log('CLICK', this.state.clicks))
+
 
     if(this.state.status == false){
 
-      this.setState({phase:'focus'}, ()=> console.log(this.state.phase))
-      this.setState({status: true}, ()=> console.log(this.state.status))
+      this.setState({phase:'focus',status: true}, ()=> console.log('START >>', this.state.phase, this.state.status))
+      // this.setState({}, ()=> console.log(this.state.status))
 
+      if(this.state.clicks <= 1){
+        this.startTimerFocus(this.state.focusTime*60, this.state.focusTime)
+      console.log('FOCUS TIME: ', this.state.focusTime)
 
-      this.startTimerFocus(this.state.focusTime*60)
+      } else {
+        this.startTimerFocus(this.state.focusTime)
+      }
+      
+      
 
       setTimeout(()=>{
         this.startTimerFocus(this.state.restTime)
@@ -106,8 +123,10 @@ class App extends Component {
       }, this.state.focusTime*60*1000)
 
     } else {
-      this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-      this.setState({status: false}, ()=> console.log(this.state.status))
+      // this.setState({focusTime:this.state.focusTime/60})
+      this.setState({phase:'rest',status: false}, ()=> console.log('PAUSE >>', this.state.phase, this.state.status))
+      // this.setState({}, ()=> console.log(this.state.status))
+      // this.setState({focusTime: this.state.focusTime/60}, ()=> console.log(this.state.focusTime))
     }
   }
 
@@ -149,7 +168,8 @@ class App extends Component {
     return(
       <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
         <h1 className = 'f2 tc white pt3'>Pomodoro</h1>
-        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase} statusLabel = {this.state.status}/>
+        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase} 
+        statusLabel = {this.state.status} displayTime = {this.state.displayTime}/>
         <SliderInput focusTime = {this.onfocusTimeChange} restTime = {this.onrestTimeChange}/>
         <Controller status = {this.onButtonClick} reset = {this.onResetClick} statusLabel = {this.state.status}/>
       </div>

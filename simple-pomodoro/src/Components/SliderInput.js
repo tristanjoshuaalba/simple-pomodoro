@@ -52,11 +52,11 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             id = "discrete-slider"
             gutterBottom className = 'white' >
             Focus </Typography> 
-            <PrettySlider defaultValue = { 0.5 }
+            <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.5 }
+            step = { 0.1 }
             marks min = { 0 }
             max = { 60 }
             onChange = { focusTime }
@@ -67,11 +67,11 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             gutterBottom className = 'white' >
             Rest 
             </Typography> 
-            <PrettySlider defaultValue = { 0.5 }
+            <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.5 }
+            step = { 0.1 }
             marks min = { 0 }
             max = { 30 }
             onChange = { restTime }
@@ -83,11 +83,11 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             id = "discrete-slider"
             gutterBottom className = 'white' >
             Focus </Typography> 
-            <PrettySlider defaultValue = { 0.5 }
+            <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.5 }
+            step = { 0.1 }
             marks min = { 0 }
             max = { 60 }
             onChange = { focusTime }
@@ -97,11 +97,11 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             gutterBottom className = 'white' >
             Rest 
             </Typography> 
-            <PrettySlider defaultValue = { 0.5 }
+            <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.5 }
+            step = { 0.1 }
             marks min = { 0 }
             max = { 30 }
             onChange = { restTime }

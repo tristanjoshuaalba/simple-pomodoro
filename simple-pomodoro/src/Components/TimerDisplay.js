@@ -78,7 +78,7 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
         if (clicks <= 1){
             ft = focusTime*60
         } else {
-            ft = focusTime*60
+            ft = focusTime
         }
         
         

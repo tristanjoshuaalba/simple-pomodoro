@@ -1,3 +1,4 @@
+import { duration } from '@material-ui/core';
 import React, {Component} from 'react';
 import './App.css';
 // Components
@@ -11,13 +12,13 @@ class App extends Component {
     super();
     this.state = {
       resetStatus: false,
-      resetFocusTime: 0.5,
-      resetRestTime: 0.5,
-      focusTime: 0.5,
-      restTime: 0.5,
+      resetFocusTime: 0.1,
+      resetRestTime: 0.1,
+      focusTime: 0.1,
+      restTime: 0.1,
       status: false,
       phase: 'rest',
-      displayTime: 30,
+      displayTime: 6,
       clicks: 0
     }
     console.log(this.state) 
@@ -69,7 +70,7 @@ class App extends Component {
     let timer = duration, minutes, seconds;
     let countDown = duration
 
-    const time = setInterval(() => {
+    const time = () => setInterval(() => {
         if(this.state.resetStatus === false){
           timer--;
           countDown--;
@@ -80,8 +81,6 @@ class App extends Component {
           } else if(this.state.status === true & this.state.phase === 'rest') {
             this.setState({restTime: countDown}, ()=>console.log('NEW RT: ', this.state.restTime))
           }
-          
-
         }
         
         if(this.state.status === false | this.state.resetStatus === true){
@@ -90,16 +89,47 @@ class App extends Component {
 
         if(timer<=0){
           clearInterval(time);
+        
+          // this.setState({status: false})
         }
       }, 1000);
     }
 
+    startTimerRest = (durationFocus, durationRest) => {
+       const restTime = () => setTimeout(()=>{
+        if(this.state.resetStatus === false){
+          this.startTimerFocus(durationRest)
+          this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+
+          const alerta = () => setTimeout(()=>{
+            if(this.state.resetStatus === false){
+            alert('TIMES UP!')
+            // this.setState({status:false})
+            this.onResetClick()
+            }
+            if(this.state.status === false | this.state.resetStatus === true){
+              clearTimeout(restTime)
+              clearTimeout(alerta);
+            }
+          }, durationFocus*60*1000)
+
+        }
+
+        if(this.state.status === false | this.state.resetStatus === true){
+          clearTimeout(restTime);
+          
+        }
+
+        
+      }, durationFocus*60*1000)
+      
+    }
   // startTimer(timerDisplay, display)
 
   onButtonClick = () => {
 
     this.setState({clicks:this.state.clicks+1}, ()=>console.log('CLICK', this.state.clicks))
-
+    console.log('BUTTON CLICK', this.state)
 
     if(this.state.status == false){
 
@@ -109,22 +139,27 @@ class App extends Component {
       if(this.state.clicks <= 1){
         this.startTimerFocus(this.state.focusTime*60)
       console.log('FOCUS TIME: ', this.state.focusTime)
+      this.startTimerRest(this.state.focusTime, this.state.restTime*60)
 
       } else {
         this.startTimerFocus(this.state.focusTime)
+        this.startTimerRest(this.state.focusTime/60, this.state.restTime)
       }
       
+      console.log(this.state.restTime)
+
+      // setTimeout(()=>{
+      //   this.startTimerFocus(this.state.restTime*60)
+      //   this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+
+      // }, this.state.focusTime*60*1000)
+
       
-
-      setTimeout(()=>{
-        this.startTimerFocus(this.state.restTime*60)
-        this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-
-      }, this.state.focusTime*60*1000)
 
     } else {
       // this.setState({focusTime:this.state.focusTime/60})
       this.setState({phase:'rest',status: false}, ()=> console.log('PAUSE >>', this.state.phase, this.state.status))
+      clearTimeout()
       // this.setState({}, ()=> console.log(this.state.status))
       // this.setState({focusTime: this.state.focusTime/60}, ()=> console.log(this.state.focusTime))
     }
@@ -159,7 +194,7 @@ class App extends Component {
       this.setState({displayTime:this.state.focusTime})
       this.setState({resetStatus: true})
       this.setState({focusTime: this.state.resetFocusTime*60}, ()=> console.log(this.state.focusTime))
-      this.setState({restTime: this.state.resetRestTime*60})
+      this.setState({restTime: this.state.resetRestTime*60}, ()=> console.log(this.state.restTime))
       this.setState({status: false})
     } 
     setTimeout(()=> {this.setState({resetStatus: false})}, 1000)

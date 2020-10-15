@@ -11,7 +11,7 @@ import React from 'react';
 // let display = document.querySelector('#time');
 
 
-const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, clicks}) => {
+const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, clicks, reset}) => {
     
 
 
@@ -57,12 +57,28 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay = minutes + ":" + seconds  
-    } else {
+    } else if (reset === true) {
+        console.log('HAKDOG')
+
+        let fT;
+        fT = displayTime
+        // fT = focusTime;
+
+        let minutes;
+        let seconds;
+        minutes = parseInt(focusTime / 60, 10);
+        seconds = parseInt(focusTime % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerDisplay = minutes + ":" + seconds  
+    
+    }else {
         let ft;
         if (clicks <= 1){
             ft = focusTime*60
         } else {
-            ft = focusTime
+            ft = focusTime*60
         }
         
         

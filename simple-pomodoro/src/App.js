@@ -158,7 +158,7 @@ class App extends Component {
       this.setState({clicks:this.state.clicks+1})
       this.setState({displayTime:this.state.focusTime})
       this.setState({resetStatus: true})
-      this.setState({focusTime: this.state.resetFocusTime*60})
+      this.setState({focusTime: this.state.resetFocusTime*60}, ()=> console.log(this.state.focusTime))
       this.setState({restTime: this.state.resetRestTime*60})
       this.setState({status: false})
     } 
@@ -170,7 +170,7 @@ class App extends Component {
     return(
       <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
         <h1 className = 'f2 tc white pt3'>Pomodoro</h1>
-        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase} 
+        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase} reset = {this.state.resetStatus}
         statusLabel = {this.state.status} displayTime = {this.state.displayTime} clicks = {this.state.clicks}/>
         <SliderInput focusTime = {this.onfocusTimeChange} restTime = {this.onrestTimeChange} statusLabel = {this.state.status}/>
         <Controller status = {this.onButtonClick} reset = {this.onResetClick} statusLabel = {this.state.status}/>

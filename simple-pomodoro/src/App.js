@@ -67,10 +67,11 @@ class App extends Component {
   //   }
  
   startTimerFocus = (duration) => {
+    console.log('TIMER HAS STARTED')
     let timer = duration, minutes, seconds;
     let countDown = duration
 
-    const time = () => setInterval(() => {
+    const time = setInterval(() => {
         if(this.state.resetStatus === false){
           timer--;
           countDown--;
@@ -96,12 +97,12 @@ class App extends Component {
     }
 
     startTimerRest = (durationFocus, durationRest) => {
-       const restTime = () => setTimeout(()=>{
+       const restTime =  setTimeout(()=>{
         if(this.state.resetStatus === false){
           this.startTimerFocus(durationRest)
           this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
 
-          const alerta = () => setTimeout(()=>{
+          const alerta = setTimeout(()=>{
             if(this.state.resetStatus === false){
             alert('TIMES UP!')
             // this.setState({status:false})
@@ -129,7 +130,7 @@ class App extends Component {
   onButtonClick = () => {
 
     this.setState({clicks:this.state.clicks+1}, ()=>console.log('CLICK', this.state.clicks))
-    console.log('BUTTON CLICK', this.state)
+    
 
     if(this.state.status == false){
 
@@ -140,6 +141,7 @@ class App extends Component {
         this.startTimerFocus(this.state.focusTime*60)
       console.log('FOCUS TIME: ', this.state.focusTime)
       this.startTimerRest(this.state.focusTime, this.state.restTime*60)
+      
 
       } else {
         this.startTimerFocus(this.state.focusTime)
@@ -154,11 +156,12 @@ class App extends Component {
 
       // }, this.state.focusTime*60*1000)
 
-      
+      console.log('BUTTON CLICK', this.state)
 
     } else {
       // this.setState({focusTime:this.state.focusTime/60})
       this.setState({phase:'rest',status: false}, ()=> console.log('PAUSE >>', this.state.phase, this.state.status))
+      console.log('BUTTON CLICK', this.state)
       clearTimeout()
       // this.setState({}, ()=> console.log(this.state.status))
       // this.setState({focusTime: this.state.focusTime/60}, ()=> console.log(this.state.focusTime))

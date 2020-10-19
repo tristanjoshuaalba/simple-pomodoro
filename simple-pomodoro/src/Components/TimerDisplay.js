@@ -34,7 +34,7 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
 
     } else if (phase === 'rest' & statusLabel === true) {
         let rT;
-        rT = restTime 
+        rT = displayTime 
         let minutes;
         let seconds;
         minutes = parseInt(rT / 60, 10);
@@ -57,7 +57,7 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
         timerDisplay = minutes + ":" + seconds  
     } else {
         let fT;
-        fT = focusTime
+        fT = displayTime
         
         
   

@@ -4,9 +4,9 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 
 
-const Controller = ({status, reset, statusLabel}) => {
+const Controller = ({status, reset, statusLabel, button}) => {
     let label;
-    if(statusLabel === false){
+    if(button === true){
         label = 'Start'
         return ( 
        
@@ -14,7 +14,6 @@ const Controller = ({status, reset, statusLabel}) => {
                 <h1></h1>
                 <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" className = 'center tc'>
                 <Button className = 'w-100' onClick={status}> {label} </Button>
-                <Button className = 'w-100' onClick={reset} disabled>Reset</Button>
                 </ButtonGroup>
             </div>
         )
@@ -25,8 +24,8 @@ const Controller = ({status, reset, statusLabel}) => {
             <div className = 'center tc w-75'>
                 <h1></h1>
                 <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" className = 'center tc'>
-                <Button className = 'w-100' onClick={status}> {label} </Button>
-                <Button className = 'w-100' onClick={reset}>Reset</Button>
+                <Button className = 'w-100' onClick={status}disabled
+                > {label}  </Button>
                 </ButtonGroup>
             </div>
         )

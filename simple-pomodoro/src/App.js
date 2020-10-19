@@ -1,5 +1,5 @@
 import { duration } from '@material-ui/core';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 // Components
 import Controller from './Components/Controls';
@@ -8,216 +8,190 @@ import TimerDisplay from './Components/TimerDisplay';
 
 // APP Class
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      resetStatus: false,
-      resetFocusTime: 0.1,
-      resetRestTime: 0.1,
-      focusTime: 0.1,
-      restTime: 0.1,
-      status: false,
-      phase: 'rest',
-      displayTime: 6,
-      clicks: 0
+    constructor() {
+        super();
+        this.state = {
+            focusTime: 0.1,
+            restTime: 0.1,
+            resetFocusTime: 0.1,
+            resetRestTime: 0.1,
+            status: false,
+            phase: 'rest',
+            displayTime: 6,
+            clicks: 0,
+            button: true
+
+        }
+        console.log(this.state)
     }
-    console.log(this.state) 
-  }
 
-  onfocusTimeChange = (event) => {
-    this.setState({focusTime: event.target.ariaValueNow, resetFocusTime: event.target.ariaValueNow})
-  }
+    onfocusTimeChange = (event) => {
+        this.setState({ focusTime: event.target.ariaValueNow 
+                        , resetFocusTime: event.target.ariaValueNow })
+    }
 
-  onrestTimeChange = (event) => {
-    this.setState({restTime: event.target.ariaValueNow, resetRestTime: event.target.ariaValueNow})
-  }
+    onrestTimeChange = (event) => {
+        this.setState({ restTime: event.target.ariaValueNow 
+                        , resetRestTime: event.target.ariaValueNow })
+    }
 
-  // clockTickFocus = (timeLeft) => {
-  //   const timer = setInterval(()=> {
-  //     timeLeft--;
-  //     if(this.state.resetStatus === false){
-  //       this.setState({focusTime:timeLeft})
-  //     }
-      
-  //     if(this.state.status === false | this.state.resetStatus === true){
-  //       clearInterval(timer);
-  //     }
+    startTimer = (duration) => {
+        console.log('TIMER HAS STARTED')
+        let timer = duration;
+        let countDown = duration
 
-  //     if(timeLeft<=0){
-  //       clearInterval(timer);
-  //     }
-  //   }, 1000);
-  //   }
+        const time = setInterval(() => {
+            if (this.state.status === true) {
+                timer--;
+                countDown--;
+                this.setState({ displayTime: timer })
 
-  //  clockTickRest = (timeLeft) => {
-  //   const timer = setInterval(()=> {
-  //     timeLeft--;
-  //     if(this.state.resetStatus === false){
-  //       this.setState({restTime:timeLeft})
-  //     }
-      
-  //     if(this.state.status === false | this.state.resetStatus === true){
-  //       clearInterval(timer);
-  //     }
+                if (this.state.status === true & this.state.phase === 'focus') {
 
-  //     if(timeLeft<=0){
-  //       clearInterval(timer);
-  //     }
-  //   }, 1000);
-  //   }
- 
-  startTimerFocus = (duration) => {
-    console.log('TIMER HAS STARTED')
-    let timer = duration, minutes, seconds;
-    let countDown = duration
+                    this.setState({ focusTime: countDown },
+                        () => console.log('NEW FT: ', this.state.focusTime))
 
-    const time = setInterval(() => {
-        if(this.state.resetStatus === false){
-          timer--;
-          countDown--;
-          // this.setState({focusTime:timer})
-          this.setState({displayTime: timer})
-          if(this.state.status === true & this.state.phase === 'focus'){
-            this.setState({focusTime: countDown}, ()=>console.log('NEW FT: ', this.state.focusTime))
-          } else if(this.state.status === true & this.state.phase === 'rest') {
-            this.setState({restTime: countDown}, ()=>console.log('NEW RT: ', this.state.restTime))
-          }
-        }
-        
-        if(this.state.status === false | this.state.resetStatus === true){
-          clearInterval(time);
-        }
+                } else if (this.state.status === true & this.state.phase === 'rest') {
 
-        if(timer<=0){
-          clearInterval(time);
-        
-          // this.setState({status: false})
-        }
-      }, 1000);
+                    this.setState({ restTime: countDown },
+                        () => console.log('NEW RT: ', this.state.restTime))
+                }
+            }
+
+            if (this.state.status === false) {
+                clearInterval(time);
+            }
+
+            if (timer <= 0) {
+                clearInterval(time);
+            }
+        }, 1000);
     }
 
     startTimerRest = (durationFocus, durationRest) => {
-       const restTime =  setTimeout(()=>{
-        if(this.state.resetStatus === false){
-          this.startTimerFocus(durationRest)
-          this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+            const restTime = setTimeout(() => {
+                if (this.state.status === true) {
+                    this.startTimer(durationRest)
+                    this.setState({ phase: 'rest' }, () => console.log(this.state.phase))
 
-          const alerta = setTimeout(()=>{
-            if(this.state.resetStatus === false){
-            alert('TIMES UP!')
-            // this.setState({status:false})
-            this.onResetClick()
-            }
-            if(this.state.status === false | this.state.resetStatus === true){
-              clearTimeout(restTime)
-              clearTimeout(alerta);
-            }
-          }, durationFocus*60*1000)
+                    const alerta = setTimeout(() => {
+                        alert('TIMES UP!')
+                        this.setState({button:true}, () => console.log(this.state.button))
+
+                        this.setState({focusTime: this.state.resetFocusTime, 
+                        restTime: this.state.resetRestTime
+                      , status: false})
+
+                        this.setState({})
+                        if (this.state.status === false) {
+                            clearTimeout(restTime)
+                            clearTimeout(alerta);
+                            
+                        }
+                    }, durationRest * 60 * 1000)
+                }
+
+                if (this.state.status === false) {
+                    clearTimeout(restTime);
+
+                }
+
+
+            }, durationFocus * 60 * 1000)
 
         }
+        // startTimer(timerDisplay, display)
 
-        if(this.state.status === false | this.state.resetStatus === true){
-          clearTimeout(restTime);
-          
+    onButtonClick = () => {
+        this.setState({ clicks: this.state.clicks + 1 }, () => console.log('CLICK', this.state.clicks))
+
+
+        if (this.state.status == false) {
+
+            this.setState({ phase: 'focus', status: true }, () => console.log('START >>', this.state.phase, this.state.status))
+                // this.setState({}, ()=> console.log(this.state.status))
+
+            if (this.state.clicks <= 1) {
+              this.setState({button:false})
+                this.startTimer(this.state.focusTime * 60)
+                console.log('FOCUS TIME: ', this.state.focusTime)
+                this.startTimerRest(this.state.focusTime, this.state.restTime)
+
+
+            } else {
+                this.startTimer(this.state.focusTime)
+                this.setState({button:false})
+                this.startTimerRest(this.state.focusTime / 60, this.state.restTime/60)
+            }
+
+            console.log(this.state.restTime)
+
+            // setTimeout(()=>{
+            //   this.startTimerFocus(this.state.restTime*60)
+            //   this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+
+            // }, this.state.focusTime*60*1000)
+
+            console.log('BUTTON CLICK', this.state)
+
+        } else {
+            // this.setState({focusTime:this.state.focusTime/60})
+            this.setState({ phase: 'rest', status: false }, () => console.log('PAUSE >>', this.state.phase, this.state.status))
+            console.log('BUTTON CLICK', this.state)
+            clearTimeout()
+                // this.setState({}, ()=> console.log(this.state.status))
+                // this.setState({focusTime: this.state.focusTime/60}, ()=> console.log(this.state.focusTime))
         }
-
-        
-      }, durationFocus*60*1000)
-      
     }
-  // startTimer(timerDisplay, display)
 
-  onButtonClick = () => {
+    // onButtonClick = () => {
 
-    this.setState({clicks:this.state.clicks+1}, ()=>console.log('CLICK', this.state.clicks))
-    
 
-    if(this.state.status == false){
+    //   if(this.state.status == false){
 
-      this.setState({phase:'focus',status: true}, ()=> console.log('START >>', this.state.phase, this.state.status))
-      // this.setState({}, ()=> console.log(this.state.status))
+    //     this.setState({phase:'focus'}, ()=> console.log(this.state.phase))
+    //     this.setState({status: true}, ()=> console.log(this.state.status))
 
-      if(this.state.clicks <= 1){
-        this.startTimerFocus(this.state.focusTime*60)
-      console.log('FOCUS TIME: ', this.state.focusTime)
-      this.startTimerRest(this.state.focusTime, this.state.restTime*60)
-      
 
-      } else {
-        this.startTimerFocus(this.state.focusTime)
-        this.startTimerRest(this.state.focusTime/60, this.state.restTime)
-      }
-      
-      console.log(this.state.restTime)
+    //     this.clockTickFocus(this.state.focusTime)
 
-      // setTimeout(()=>{
-      //   this.startTimerFocus(this.state.restTime*60)
-      //   this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+    //     setTimeout(()=>{
+    //       this.clockTickRest(this.state.restTime)
+    //       this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
 
-      // }, this.state.focusTime*60*1000)
+    //     }, this.state.focusTime*1000)
 
-      console.log('BUTTON CLICK', this.state)
+    //   } else {
+    //     this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
+    //     this.setState({status: false}, ()=> console.log(this.state.status))
+    //   }
+    // }
 
-    } else {
-      // this.setState({focusTime:this.state.focusTime/60})
-      this.setState({phase:'rest',status: false}, ()=> console.log('PAUSE >>', this.state.phase, this.state.status))
-      console.log('BUTTON CLICK', this.state)
-      clearTimeout()
-      // this.setState({}, ()=> console.log(this.state.status))
-      // this.setState({focusTime: this.state.focusTime/60}, ()=> console.log(this.state.focusTime))
+
+
+    // To do: Add phase for timer
+    render() {
+        return ( <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5' >
+            <h1 className = 'f2 tc white pt3' > Pomodoro </h1>  
+            <TimerDisplay focusTime = { this.state.focusTime }
+            restTime = { this.state.restTime }
+            phase = { this.state.phase }
+            statusLabel = { this.state.status }
+            displayTime = { this.state.displayTime }
+            clicks = { this.state.clicks }
+            />  
+            <SliderInput focusTime = { this.onfocusTimeChange }
+            restTime = { this.onrestTimeChange }
+            statusLabel = { this.state.status }
+            />  
+            <Controller status = { this.onButtonClick }
+            statusLabel = { this.state.status }
+            button = {this.state.button}
+            /> </div>
+        )
     }
-  }
-
-  // onButtonClick = () => {
-
-
-  //   if(this.state.status == false){
-
-  //     this.setState({phase:'focus'}, ()=> console.log(this.state.phase))
-  //     this.setState({status: true}, ()=> console.log(this.state.status))
-
-
-  //     this.clockTickFocus(this.state.focusTime)
-
-  //     setTimeout(()=>{
-  //       this.clockTickRest(this.state.restTime)
-  //       this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-
-  //     }, this.state.focusTime*1000)
-
-  //   } else {
-  //     this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-  //     this.setState({status: false}, ()=> console.log(this.state.status))
-  //   }
-  // }
-
-  onResetClick = () => {
-    if(this.state.resetStatus === false) {
-      this.setState({clicks:this.state.clicks+1})
-      this.setState({displayTime:this.state.focusTime})
-      this.setState({resetStatus: true})
-      this.setState({focusTime: this.state.resetFocusTime*60}, ()=> console.log(this.state.focusTime))
-      this.setState({restTime: this.state.resetRestTime*60}, ()=> console.log(this.state.restTime))
-      this.setState({status: false})
-    } 
-    setTimeout(()=> {this.setState({resetStatus: false})}, 1000)
-  }
-
-// To do: Add phase for timer
-  render() {
-    return(
-      <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
-        <h1 className = 'f2 tc white pt3'>Pomodoro</h1>
-        <TimerDisplay focusTime = {this.state.focusTime} restTime = {this.state.restTime} phase = {this.state.phase} reset = {this.state.resetStatus}
-        statusLabel = {this.state.status} displayTime = {this.state.displayTime} clicks = {this.state.clicks}/>
-        <SliderInput focusTime = {this.onfocusTimeChange} restTime = {this.onrestTimeChange} statusLabel = {this.state.status}/>
-        <Controller status = {this.onButtonClick} reset = {this.onResetClick} statusLabel = {this.state.status}/>
-      </div>
-    )
-  }
 
 }
 
 
 export default App;
-

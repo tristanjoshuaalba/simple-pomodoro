@@ -45,28 +45,26 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
         timerDisplay = minutes + ":" + seconds  
 
     } else if (phase === 'focus' & statusLabel === false) {
+        let fT;
+        fT = displayTime
         let minutes;
         let seconds;
-        minutes = parseInt(focusTime / 60, 10);
-        seconds = parseInt(focusTime % 60, 10);
+        minutes = parseInt(fT / 60, 10);
+        seconds = parseInt(fT % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay = minutes + ":" + seconds  
     } else {
-        let ft;
-        if (clicks <= 1){
-            ft = focusTime*60
-        } else {
-            ft = focusTime
-        }
+        let fT;
+        fT = focusTime
         
         
   
         let minutes;
         let seconds;
-        minutes = parseInt(ft / 60, 10);
-        seconds = parseInt(ft % 60, 10);
+        minutes = parseInt(fT / 60, 10);
+        seconds = parseInt(fT % 60, 10);
 
         // console.log(minutes, seconds)
 

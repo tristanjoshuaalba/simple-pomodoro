@@ -170,9 +170,12 @@ class App extends Component {
     render() {
         return ( 
         
-        <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
+        <div className = 'center w-40 vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
 
-            <h1 className = 'f1 tc white pt4 title'> Simple Pomodoro </h1>   
+            <div className = 'f1 tc white pt4 main-font'> Simple Pomodoro </div>
+
+            <div className = 'f4 tc white pa2 pb4 text-font'> Get things done with this simple timer </div>
+            {/* <div className = 'ba b--near-white shadow-0'></div> */}
 
             < CycleCount
                 cycle = { this.state.cycle }

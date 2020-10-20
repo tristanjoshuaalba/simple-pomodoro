@@ -1,19 +1,6 @@
 import React from 'react';
 
-
-
-
-// window.onload = function () {
-//     var fiveMinutes = 60 * 5
-        
-//     startTimer(fiveMinutes, display);
-// };
-// let display = document.querySelector('#time');
-
-
-const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, clicks, reset}) => {
-    
-
+const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) => {
 
     let timerDisplay;
     if (phase === 'focus' & statusLabel === true) {
@@ -25,8 +12,6 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
         let seconds;
         minutes = parseInt(ft / 60, 10);
         seconds = parseInt(ft % 60, 10);
-
-        // console.log(minutes, seconds)
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -76,11 +61,10 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
 
 
     return ( 
-    <div className = 'tc bg-light-green br3 h5 pa4 ma3 w-90 center' >
-        {/* <h1> TimerDisplay </h1>  */}
-        <h1 className = 'f1'> {timerDisplay} </h1> 
-        <h3> {focusTime} </h3> 
-        <h3> {restTime} </h3>
+    <div className = 'dt tc bg-freesia br3 mt3 mb3 vh-25 w-90 center' >
+
+        <div className = 'dtc f-headline-l h-90 pa1 main-font color-aquamarine v-mid'> {timerDisplay} </div> 
+
     </div>
     )
 }
@@ -88,5 +72,5 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime, cl
 export default TimerDisplay;
 
 
-//* <h2>{focusTime}</h2> */  
- /* <h2>{restTime}</h2> */ 
+{/* <h3> {focusTime} </h3> 
+<h3> {restTime} </h3> */}

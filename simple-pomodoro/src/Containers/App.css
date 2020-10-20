@@ -1,7 +1,65 @@
-.title {
-  font-family: 'Oswald', sans-serif;
-  /* color: white;
-  font-weight: 200;
-  color: #0ccac4;
-  font-size: 2rem; */
+.main-font {
+  font-family: 'Yeseva One', cursive;
 }
+
+.text-font {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.sub-font {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.number-font{
+  font-family: 'Playfair Display', serif;
+}
+/* Gradient transparent - color - transparent */
+
+.style-two {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+
+.cycle-count{
+  background-color: #EFE7BC;
+}
+  
+
+.bg-baby-blue{
+  background-color: #E7F2F8
+}
+
+.bg-aquamarine{
+  background-color: #74BDCB
+}
+
+.bg-salmon{
+  background-color: #FFA384
+}
+
+.bg-freesia{
+  background-color:#EFE7BC
+}
+
+.color-baby-blue{
+  color: #E7F2F8
+}
+
+.color-aquamarine{
+  color: #74BDCB
+}
+
+.color-salmon {
+  color: #FFA384
+}
+
+.color-freesia{
+  color:#EFE7BC
+}
+/* 
+#E7F2F8
+#74BDCB
+#FFA384
+*/

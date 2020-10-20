@@ -6,6 +6,7 @@ import './App.css';
 import Controller from '../Components/Controls';
 import SliderInput from '../Components/SliderInput';
 import TimerDisplay from '../Components/TimerDisplay';
+import CycleCount from '../Components/CycleCount';
 
 // APP Class
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
         }
     }
 
+    // Creating a forceUpdate() function to render components forcibly
     forceUpdateHandler = () => {
         this.forceUpdate();
     };
@@ -53,7 +55,7 @@ class App extends Component {
 
     // Creating a function for the countdown timer
     startTimer = (duration) => {
-        console.log('The timer has started: ', this.state.phase)
+        
 
         // Creating separate variables for display and for state change
         let timer = duration * 60;
@@ -67,6 +69,7 @@ class App extends Component {
 
                 // Checking which phase the pomodoro is in: FOCUS
                 if (this.state.phase === 'focus') {
+
                     this.setState({ displayTime: timer });
 
                     this.setState({ focusTime: countDown / 60 },
@@ -113,6 +116,8 @@ class App extends Component {
                         alert('Good Job! You finished a cycle!')
                         // Enabling button again using button state = True
                         this.setState({ button: true }, () => console.log(this.state.button))
+                        // Resetting the state values by referring to the reset values
+                        // Adding 1 to the cycle count
                         this.setState({
                             focusTime: this.state.resetFocusTime,
                             restTime: this.state.resetRestTime,
@@ -120,98 +125,81 @@ class App extends Component {
                             status: false,
                             cycle: this.state.cycle + 1
                         })
+                        // Force render the entire page
                         this.forceUpdateHandler()
 
-                        this.setState({})
                         if (this.state.status === false) {
                             clearTimeout(restTime)
                             clearTimeout(alerta)
-
-
-
                         }
                     }, durationRest * 60 * 1000)
                 }
 
                 if (this.state.status === false) {
                     clearTimeout(restTime);
-
                 }
 
-
             }, durationFocus * 60 * 1000)
-
         }
-        // startTimer(timerDisplay, display)
+
 
     onButtonClick = () => {
-        this.setState({ clicks: this.state.clicks + 1 }, () => console.log('CLICK', this.state.clicks))
-
+        // this.setState({ clicks: this.state.clicks + 1 }, () => console.log('CLICK', this.state.clicks))
 
         if (this.state.status == false) {
-
-            this.setState({ phase: 'focus', status: true }, () => console.log('START >>', this.state.phase, this.state.status))
-                // this.setState({}, ()=> console.log(this.state.status))
-
-            // if (this.state.clicks <= 1) {
+            // Setting phase to FOCUS
+            this.setState({ phase: 'focus', status: true }, () => console.log('The timer has started: ', this.state.phase))
+            // Disabling the button using the button state
             this.setState({ button: false })
+            // Starting the timer using the startTimer() function
             this.startTimer(this.state.focusTime)
-            console.log('FOCUS TIME: ', this.state.focusTime)
+            console.log('Total focusTime: ', this.state.focusTime*60, 's')
+
+            // Running the rest timer ASYNC 
             this.startTimerRest(this.state.focusTime, this.state.restTime)
+            console.log('Total restTime: ', this.state.restTime*60, 's')
 
-
-            // } else {
-            //     this.startTimer(this.state.focusTime)
-            //     this.setState({button:false})
-            //     this.startTimerRest(this.state.focusTime / 60, this.state.restTime/60)
-            // }
-
-            console.log(this.state.restTime)
-
-            // setTimeout(()=>{
-            //   this.startTimerFocus(this.state.restTime*60)
-            //   this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-
-            // }, this.state.focusTime*60*1000)
-
-            console.log('BUTTON CLICK', this.state)
-
+        // Logic provision for PAUSE functionality: UNDER DEVELOPMENT
         } else {
-            // this.setState({focusTime:this.state.focusTime/60})
-            this.setState({ phase: 'rest', status: false }, () => console.log('PAUSE >>', this.state.phase, this.state.status))
-            console.log('BUTTON CLICK', this.state)
+            this.setState({ phase: 'rest', status: false })
             clearTimeout()
-                // this.setState({}, ()=> console.log(this.state.status))
-                // this.setState({focusTime: this.state.focusTime/60}, ()=> console.log(this.state.focusTime))
         }
     }
 
 
-
-
-
-    // To do: Add phase for timer
     render() {
         return ( 
         
         <div className = 'center w-third vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
-            <h1 className = 'f2 tc white pt3'> Pomodoro </h1>   
-            <h2 className = 'tc white'> Cycle = {this.state.cycle} </h2>
-            <TimerDisplay focusTime = { this.state.focusTime }
-            restTime = { this.state.restTime }
-            phase = { this.state.phase }
-            statusLabel = { this.state.status }
-            displayTime = { this.state.displayTime }
-            clicks = { this.state.clicks }
+
+            <h1 className = 'f1 tc white pt4 title'> Simple Pomodoro </h1>   
+
+            < CycleCount
+                cycle = { this.state.cycle }
+            />
+
+            <TimerDisplay 
+                focusTime = { this.state.focusTime }
+                restTime = { this.state.restTime }
+                phase = { this.state.phase }
+                statusLabel = { this.state.status }
+                displayTime = { this.state.displayTime }
+                clicks = { this.state.clicks }
             />   
-            <SliderInput focusTime = { this.onfocusTimeChange }
-            restTime = { this.onrestTimeChange }
-            statusLabel = { this.state.status }
+            
+            <SliderInput 
+                focusTime = { this.onfocusTimeChange }
+                restTime = { this.onrestTimeChange }
+                statusLabel = { this.state.status }
             />   
-            <Controller status = { this.onButtonClick }
-            statusLabel = { this.state.status }
-            button = { this.state.button }
-            /> </div >
+            
+            <Controller 
+                status = { this.onButtonClick }
+                statusLabel = { this.state.status }
+                button = { this.state.button }
+            /> 
+        
+        </div >
         )
     }
 

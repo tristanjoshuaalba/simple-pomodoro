@@ -55,12 +55,12 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             Concentrate
             </div>
             </Typography> 
-            <PrettySlider defaultValue = { 0.1 }
+            <PrettySlider defaultValue = { 25 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.1 }
-            marks min = { 0 }
+            step = { 5 }
+            marks min = { 10 }
             max = { 60 }
             onChange = { focusTime }
             disabled
@@ -72,11 +72,11 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             Relax
             </div>
             </Typography> 
-            <PrettySlider defaultValue = { 0.1 }
+            <PrettySlider defaultValue = { 5 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.1 }
+            step = { 5 }
             marks min = { 0 }
             max = { 30 }
             onChange = { restTime }
@@ -87,37 +87,37 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             return ( <div className = 'center w-75' >
             <Typography 
             id = "discrete-slider"
-            className = 'white' >
+            gutterBottom className = 'white' >
             <div className = 'f5 white text-font'> 
             Concentrate
             </div>
-            
             </Typography> 
-            <PrettySlider defaultValue = { 0.1 }
+            <PrettySlider defaultValue = { 25 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.1 }
-            marks min = { 0 }
+            step = { 5 }
+            marks min = { 10 }
             max = { 60 }
             onChange = { focusTime }
+
             // valueLabelDisplay="off"
             /> 
             <Typography id = "discrete-slider"
-             className = 'white' >
-            <div className = 'f5 white text-font pa0'> 
+            gutterBottom className = 'white' >
+            <div className = 'f5 white text-font'> 
             Relax
             </div>
-           
             </Typography> 
-            <PrettySlider defaultValue = { 0.1 }
+            <PrettySlider defaultValue = { 5 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
             valueLabelDisplay = "auto"
-            step = { 0.1 }
+            step = { 5 }
             marks min = { 0 }
             max = { 30 }
             onChange = { restTime }
+
             /> </div>)
 
 

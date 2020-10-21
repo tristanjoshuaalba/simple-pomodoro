@@ -13,7 +13,8 @@ const Controller = ({status, reset, statusLabel, button}) => {
             <div className = 'center tc w-75'>
                 <h1></h1>
                 <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" className = 'center tc'>
-                <Button className = 'w-100' onClick={status}> {label} </Button>
+                <Button className = 'w-100' style = {{backgroundColor: '#74BDCB'}}onClick={status}> 
+                    <span className = 'text-font white'> {label} </span> </Button>
                 </ButtonGroup>
             </div>
         )
@@ -24,8 +25,8 @@ const Controller = ({status, reset, statusLabel, button}) => {
             <div className = 'center tc w-75'>
                 <h1></h1>
                 <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" className = 'center tc'>
-                <Button className = 'w-100' onClick={status}disabled
-                > {label}  </Button>
+                <Button className = 'w-100 ' onClick={status}disabled
+                >  <span className = 'text-font'> {label} </span> </Button>
                 </ButtonGroup>
             </div>
         )

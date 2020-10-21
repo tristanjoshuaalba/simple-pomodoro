@@ -20,7 +20,7 @@ class App extends Component {
             resetRestTime: 0.1,
             status: false,
             phase: 'rest',
-            displayTime: 6,
+            displayTime: 25*60,
             button: true,
             cycle:0
         }

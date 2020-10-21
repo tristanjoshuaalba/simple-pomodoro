@@ -51,7 +51,10 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             <Typography 
             id = "discrete-slider"
             gutterBottom className = 'white' >
-            Focus </Typography> 
+            <div className = 'f5 white text-font'> 
+            Concentrate
+            </div>
+            </Typography> 
             <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
@@ -65,7 +68,9 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             /> 
             <Typography id = "discrete-slider"
             gutterBottom className = 'white' >
-            Rest 
+            <div className = 'f5 white text-font'> 
+            Relax
+            </div>
             </Typography> 
             <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
@@ -77,12 +82,17 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             onChange = { restTime }
             disabled
             /> </div>)
+
         } else {
             return ( <div className = 'center w-75' >
             <Typography 
             id = "discrete-slider"
-            gutterBottom className = 'white' >
-            Focus </Typography> 
+            className = 'white' >
+            <div className = 'f5 white text-font'> 
+            Concentrate
+            </div>
+            
+            </Typography> 
             <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
@@ -94,8 +104,11 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             // valueLabelDisplay="off"
             /> 
             <Typography id = "discrete-slider"
-            gutterBottom className = 'white' >
-            Rest 
+             className = 'white' >
+            <div className = 'f5 white text-font pa0'> 
+            Relax
+            </div>
+           
             </Typography> 
             <PrettySlider defaultValue = { 0.1 }
             getAriaValueText = { valuetext }

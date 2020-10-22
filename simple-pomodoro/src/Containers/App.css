@@ -51,8 +51,14 @@
   color: #74BDCB
 }
 
+.gradient-salmon {
+  background: linear-gradient(to left, #ff5e62 0%, #ff9966 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .color-salmon {
   color: #FFA384
+  
 }
 
 .color-freesia{

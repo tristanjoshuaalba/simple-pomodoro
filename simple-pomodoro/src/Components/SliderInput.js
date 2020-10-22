@@ -17,7 +17,7 @@ const valuetext = (value) => {
 
 const PrettySlider = withStyles({
     root: {
-        color: '#52af77',
+        color: '#74BDCB',
         height: 8,
     },
     thumb: {

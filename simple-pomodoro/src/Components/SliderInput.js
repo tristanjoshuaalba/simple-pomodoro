@@ -23,7 +23,7 @@ const PrettySlider = withStyles({
     thumb: {
         height: 24,
         width: 24,
-        backgroundColor: '#fff',
+        backgroundColor: '#EFE7BC',
         border: '2px solid currentColor',
         marginTop: -8,
         marginLeft: -12,

@@ -170,7 +170,8 @@ class App extends Component {
     render() {
         return ( 
         
-        <div className = 'center w-40 vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
+        <div className = 'center w-75 w-60-m w-40-ns vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
+            
 
             <div className = 'f1 tc white pt4 main-font'> Simple Pomodoro </div>
 

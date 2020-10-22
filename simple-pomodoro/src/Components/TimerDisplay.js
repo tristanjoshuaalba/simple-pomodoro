@@ -62,7 +62,9 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) =
 
     return ( 
     <div className = 'dt tc bg-freesia br3 mt3 mb3 vh-25-ns h3  w-90 center' >
-        <div className = 'dtc f-headline-ns f2 h-90 pa1 main-font gradient-salmon v-mid'> {timerDisplay} </div> 
+        <div className = 'dtc v-mid tc'>
+            <div className = 'dib f-headline-ns f2 h-90 pa1 main-font gradient-salmon v-mid'> {timerDisplay} </div> 
+        </div>
     </div>
     )
 }

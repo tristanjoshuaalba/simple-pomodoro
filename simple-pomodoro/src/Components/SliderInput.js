@@ -12,7 +12,7 @@ import Slider from '@material-ui/core/Slider';
 //   });
 
 const valuetext = (value) => {
-    return `${value}°C`;
+    return `${value}`;
 }
 
 const PrettySlider = withStyles({
@@ -109,6 +109,9 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             Relax
             </div>
             </Typography> 
+
+            
+            
             <PrettySlider defaultValue = { 5 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
@@ -131,3 +134,8 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
 
 
         export default SliderInput;
+
+
+        /* <div className = 'dib f5-ns f6 color-salmon text-font fw6 bg-freesia br2 mt1 mb1 pa1 w-auto'> 
+            Relax
+            </div> */

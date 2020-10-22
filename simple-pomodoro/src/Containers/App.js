@@ -14,10 +14,10 @@ class App extends Component {
         super();
         this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
         this.state = {
-            focusTime: 0.1,
-            restTime: 0.1,
-            resetFocusTime: 0.1,
-            resetRestTime: 0.1,
+            focusTime: 25,
+            restTime: 5,
+            resetFocusTime: 25,
+            resetRestTime: 5,
             status: false,
             phase: 'rest',
             displayTime: 25*60,

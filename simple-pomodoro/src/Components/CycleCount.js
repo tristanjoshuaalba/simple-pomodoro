@@ -4,7 +4,7 @@ import React from 'react';
 const CycleCount = ({cycle}) => {
     return (
         
-        <div className = 'f4 tc white pa2 v-mid text-font '> CYCLES COMPLETED <span className = 'center f4 black pa2 tc bg-white br3 b-dashed' >{cycle}</span>  </div>
+        <div className = 'f4-ns f5 tc white pa2 v-mid text-font '> CYCLES COMPLETED <span className = 'center f4-ns f5 black pa2 tc bg-white br3 b-dashed' >{cycle}</span>  </div>
 
     )
 };

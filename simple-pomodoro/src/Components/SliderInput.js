@@ -18,7 +18,7 @@ const valuetext = (value) => {
 const PrettySlider = withStyles({
     root: {
         color: '#74BDCB',
-        height: 8,
+        height: 7,
     },
     thumb: {
         height: 24,
@@ -36,11 +36,11 @@ const PrettySlider = withStyles({
         left: 'calc(-50% + 4px)',
     },
     track: {
-        height: 12,
+        height: 9,
         borderRadius: 4,
     },
     rail: {
-        height: 12,
+        height: 9,
         borderRadius: 4,
     },
 })(Slider);
@@ -51,7 +51,7 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             <Typography 
             id = "discrete-slider"
             gutterBottom className = 'white' >
-            <div className = 'f5 white text-font'> 
+            <div className = 'f5-ns f6 white text-font'> 
             Concentrate
             </div>
             </Typography> 
@@ -68,7 +68,7 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             /> 
             <Typography id = "discrete-slider"
             gutterBottom className = 'white' >
-            <div className = 'f5 white text-font'> 
+            <div className = 'f5-ns f6 white text-font'> 
             Relax
             </div>
             </Typography> 
@@ -88,7 +88,7 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             <Typography 
             id = "discrete-slider"
             gutterBottom className = 'white' >
-            <div className = 'f5 white text-font'> 
+            <div className = 'f5-ns f6 white text-font'> 
             Concentrate
             </div>
             </Typography> 
@@ -105,7 +105,7 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             /> 
             <Typography id = "discrete-slider"
             gutterBottom className = 'white' >
-            <div className = 'f5 white text-font'> 
+            <div className = 'f5-ns f6 white text-font'> 
             Relax
             </div>
             </Typography> 

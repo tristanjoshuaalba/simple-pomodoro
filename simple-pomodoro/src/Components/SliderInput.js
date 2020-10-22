@@ -103,12 +103,9 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
 
             // valueLabelDisplay="off"
             /> 
-            <Typography id = "discrete-slider"
-            gutterBottom className = 'white' >
-            <div className = 'f5-ns f6 white text-font'> 
+            <div className = 'dib f5-ns f6 white text-font ba border-freesia b--dashed br2 mt1 mb1 pt1 pb1 pl3 pr3 w-auto'> 
             Relax
-            </div>
-            </Typography> 
+            </div> 
 
             
             
@@ -139,3 +136,12 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
         /* <div className = 'dib f5-ns f6 color-salmon text-font fw6 bg-freesia br2 mt1 mb1 pa1 w-auto'> 
             Relax
             </div> */
+
+
+
+            // <Typography id = "discrete-slider"
+            // gutterBottom className = 'white' >
+            // <div className = 'f5-ns f6 white text-font'> 
+            // Relax
+            // </div>
+            // </Typography> 

@@ -14,8 +14,8 @@ class App extends Component {
         super();
         this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
         this.state = {
-            focusTime: 25,
-            restTime: 5,
+            focusTime: 0.1,
+            restTime: 0.1,
             resetFocusTime: 25,
             resetRestTime: 5,
             status: false,
@@ -173,7 +173,7 @@ class App extends Component {
         <div className = 'center w-75 w-60-m w-40-ns vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
             
 
-            <div className = 'f1-ns f2 tc white pt4 main-font'> Simple Pomodoro </div>
+            <div className = 'f1-ns f2 tc white pt3 main-font'> Simple Pomodoro </div>
 
             <div className = 'f4 tc white pa2 pb4 text-font'> Get things done with this simple timer </div>
             {/* <div className = 'ba b--near-white shadow-0'></div> */}
@@ -195,6 +195,7 @@ class App extends Component {
                 focusTime = { this.onfocusTimeChange }
                 restTime = { this.onrestTimeChange }
                 statusLabel = { this.state.status }
+                phase = { this.state.phase}
             />   
             
             <Controller 

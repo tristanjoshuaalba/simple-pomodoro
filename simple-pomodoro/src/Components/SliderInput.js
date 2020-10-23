@@ -45,53 +45,80 @@ const PrettySlider = withStyles({
     },
 })(Slider);
 
-const SliderInput = ({ focusTime, restTime , statusLabel}) => {
+let selected, unselected;
+selected = 'dib f5-ns f6 white text-font ba border-freesia b--dotted bw1 br2 mt1 mb1 pt1 pb1 pl3 pr3 w-auto';
+unselected = 'dib f5-ns f6 white text-font mt1 mb1  pt1-ns pb1-ns pl3 pr3 pt0 pb0 w-auto'
+
+const SliderInput = ({ focusTime, restTime , statusLabel, phase}) => {
         if(statusLabel === true){
-            return ( <div className = 'center w-75' >
-            <Typography 
-            id = "discrete-slider"
-            gutterBottom className = 'white' >
-            <div className = 'f5-ns f6 white text-font'> 
-            Concentrate
-            </div>
-            </Typography> 
-            <PrettySlider defaultValue = { 25 }
-            getAriaValueText = { valuetext }
-            aria-labelledby = "discrete-slider"
-            valueLabelDisplay = "auto"
-            step = { 5 }
-            marks min = { 10 }
-            max = { 60 }
-            onChange = { focusTime }
-            disabled
-            // valueLabelDisplay="off"
-            /> 
-            <Typography id = "discrete-slider"
-            gutterBottom className = 'white' >
-            <div className = 'f5-ns f6 white text-font'> 
-            Relax
-            </div>
-            </Typography> 
-            <PrettySlider defaultValue = { 5 }
-            getAriaValueText = { valuetext }
-            aria-labelledby = "discrete-slider"
-            valueLabelDisplay = "auto"
-            step = { 5 }
-            marks min = { 0 }
-            max = { 30 }
-            onChange = { restTime }
-            disabled
-            /> </div>)
+            if(phase === 'focus'){
+                return ( <div className = 'center w-75' >
+                <div className = { selected } > 
+                 Concentrate
+                </div> 
+ 
+                
+                <PrettySlider defaultValue = { 25 }
+                getAriaValueText = { valuetext }
+                aria-labelledby = "discrete-slider"
+                valueLabelDisplay = "auto"
+                step = { 5 }
+                marks min = { 10 }
+                max = { 60 }
+                onChange = { focusTime }
+                disabled
+                // valueLabelDisplay="off"
+                /> 
+                <div className = { unselected } > 
+                 Relax
+                </div> 
+                <PrettySlider defaultValue = { 5 }
+                getAriaValueText = { valuetext }
+                aria-labelledby = "discrete-slider"
+                valueLabelDisplay = "auto"
+                step = { 5 }
+                marks min = { 0 }
+                max = { 30 }
+                onChange = { restTime }
+                disabled
+                /> </div>)
+            } else { // REST
+                return ( <div className = 'center w-75' >
+                <div className =  { unselected } > 
+                 Concentrate
+                </div>  
+                <PrettySlider defaultValue = { 25 }
+                getAriaValueText = { valuetext }
+                aria-labelledby = "discrete-slider"
+                valueLabelDisplay = "auto"
+                step = { 5 }
+                marks min = { 10 }
+                max = { 60 }
+                onChange = { focusTime }
+                disabled
+                // valueLabelDisplay="off"
+                /> 
+                <div className = { selected } > 
+                 Relax
+                </div> 
+                <PrettySlider defaultValue = { 5 }
+                getAriaValueText = { valuetext }
+                aria-labelledby = "discrete-slider"
+                valueLabelDisplay = "auto"
+                step = { 5 }
+                marks min = { 0 }
+                max = { 30 }
+                onChange = { restTime }
+                disabled
+                /> </div>)
+            }
+            
 
         } else {
             return ( <div className = 'center w-75' >
-            <Typography 
-            id = "discrete-slider"
-            gutterBottom className = 'white' >
-            <div className = 'f5-ns f6 white text-font'> 
-            Concentrate
-            </div>
-            </Typography> 
+            <div className = { unselected } > 
+             Concentrate
+            </div>  
             <PrettySlider defaultValue = { 25 }
             getAriaValueText = { valuetext }
             aria-labelledby = "discrete-slider"
@@ -103,7 +130,7 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
 
             // valueLabelDisplay="off"
             /> 
-            <div className = 'dib f5-ns f6 white text-font ba border-freesia b--dashed br2 mt1 mb1 pt1 pb1 pl3 pr3 w-auto'> 
+            <div className = { unselected } > 
             Relax
             </div> 
 
@@ -143,5 +170,14 @@ const SliderInput = ({ focusTime, restTime , statusLabel}) => {
             // gutterBottom className = 'white' >
             // <div className = 'f5-ns f6 white text-font'> 
             // Relax
+            // </div>
+            // </Typography> 
+
+
+            // <Typography 
+            // id = "discrete-slider"
+            // gutterBottom className = 'white' >
+            // <div className = 'f5-ns f6 white text-font'> 
+            // Concentrate
             // </div>
             // </Typography> 

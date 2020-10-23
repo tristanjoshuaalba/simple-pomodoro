@@ -169,7 +169,7 @@ class App extends Component {
 
     render() {
         return ( 
-        
+        <div>
         <div className = 'center w-75 w-60-m w-40-ns vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
             
 
@@ -203,8 +203,16 @@ class App extends Component {
                 statusLabel = { this.state.status }
                 button = { this.state.button }
             /> 
+
+            
         
         </div >
+        <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+        <small class="f7 db tc white text-font"> made with <span>&hearts;</span> by <a className = "white" href="https://github.com/tristanjoshuaalba">tristan</a> </small>
+        <small class="f7 db tc white text-font"> 2020-10-23 </small>
+
+        </footer>
+        </div>
         )
     }
 
@@ -238,3 +246,10 @@ export default App;
 //     this.setState({status: false}, ()=> console.log(this.state.status))
 //   }
 // }
+
+
+// <div class="tc mt3">
+// <a href="/language/" title="Language" class="f6 dib ph2 link mid-gray dim">Language</a>
+// <a href="/terms/"    title="Terms" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
+// <a href="/privacy/"  title="Privacy" class="f6 dib ph2 link mid-gray dim">Privacy</a>
+// </div>

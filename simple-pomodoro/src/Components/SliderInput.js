@@ -1,15 +1,7 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { withStyles} from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 
-
-
-// const useStyles = makeStyles({
-//     root: {
-//       width: 300,
-//     },
-//   });
 
 const valuetext = (value) => {
     return `${value}`;
@@ -18,7 +10,7 @@ const valuetext = (value) => {
 const PrettySlider = withStyles({
     root: {
         color: '#74BDCB',
-        height: 7,
+        height: 0,
     },
     thumb: {
         height: 24,
@@ -37,11 +29,11 @@ const PrettySlider = withStyles({
     },
     track: {
         height: 9,
-        borderRadius: 4,
+        borderRadius: 8,
     },
     rail: {
         height: 9,
-        borderRadius: 4,
+        borderRadius: 8,
     },
 })(Slider);
 

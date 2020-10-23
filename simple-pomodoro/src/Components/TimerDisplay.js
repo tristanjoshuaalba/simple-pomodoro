@@ -3,6 +3,7 @@ import React from 'react';
 const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) => {
 
     let timerDisplay;
+
     if (phase === 'focus' & statusLabel === true) {
         let ft;
         ft = displayTime
@@ -20,6 +21,7 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) =
     } else if (phase === 'rest' & statusLabel === true) {
         let rT;
         rT = displayTime 
+
         let minutes;
         let seconds;
         minutes = parseInt(rT / 60, 10);
@@ -32,6 +34,7 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) =
     } else if (phase === 'focus' & statusLabel === false) {
         let fT;
         fT = displayTime
+
         let minutes;
         let seconds;
         minutes = parseInt(fT / 60, 10);
@@ -51,13 +54,10 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) =
         minutes = parseInt(fT / 60, 10);
         seconds = parseInt(fT % 60, 10);
 
-        // console.log(minutes, seconds)
-
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay = minutes + ":" + seconds  
     }
- 
 
 
     return ( 
@@ -71,6 +71,3 @@ const TimerDisplay = ({ focusTime, restTime, phase, statusLabel, displayTime}) =
 
 export default TimerDisplay;
 
-
-{/* <h3> {focusTime} </h3> 
-<h3> {restTime} </h3> */}

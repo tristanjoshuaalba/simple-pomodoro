@@ -13,19 +13,10 @@
 .number-font{
   font-family: 'Playfair Display', serif;
 }
-/* Gradient transparent - color - transparent */
-
-.style-two {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-
 
 .cycle-count{
   background-color: #EFE7BC;
 }
-  
 
 .bg-baby-blue{
   background-color: #E7F2F8
@@ -58,17 +49,11 @@
 }
 .color-salmon {
   color: #FFA384
-  
 }
 
 .color-freesia{
   color:#EFE7BC
 }
-/* 
-#E7F2F8
-#74BDCB
-#FFA384
-*/
 
 .border-freesia{
   border-color: #EFE7BC;
@@ -78,5 +63,6 @@
   border-color: #74BDCB;
 }
 
-
-a {text-decoration: none;} 
+a {
+  text-decoration: none;
+} 

@@ -170,48 +170,45 @@ class App extends Component {
     render() {
         return ( 
         <div>
-        <div className = 'center w-75 w-60-m w-40-ns vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
+            <div className = 'center w-75 w-60-m w-40-ns vh-75 ma5 bg-light-red br3 b-dashed shadow-5'>
+
+                <div className = 'f1-ns f2 tc white pt3 main-font'> Simple Pomodoro </div>
+
+                <div className = 'f4 tc white pa2 pb4 text-font'> Get things done with this simple timer </div>
+
+
+                < CycleCount
+                    cycle = { this.state.cycle }
+                />
+
+                <TimerDisplay 
+                    focusTime = { this.state.focusTime }
+                    restTime = { this.state.restTime }
+                    phase = { this.state.phase }
+                    statusLabel = { this.state.status }
+                    displayTime = { this.state.displayTime }
+                    clicks = { this.state.clicks }
+                />   
             
-
-            <div className = 'f1-ns f2 tc white pt3 main-font'> Simple Pomodoro </div>
-
-            <div className = 'f4 tc white pa2 pb4 text-font'> Get things done with this simple timer </div>
-            {/* <div className = 'ba b--near-white shadow-0'></div> */}
-
-            < CycleCount
-                cycle = { this.state.cycle }
-            />
-
-            <TimerDisplay 
-                focusTime = { this.state.focusTime }
-                restTime = { this.state.restTime }
-                phase = { this.state.phase }
-                statusLabel = { this.state.status }
-                displayTime = { this.state.displayTime }
-                clicks = { this.state.clicks }
-            />   
-            
-            <SliderInput 
-                focusTime = { this.onfocusTimeChange }
-                restTime = { this.onrestTimeChange }
-                statusLabel = { this.state.status }
-                phase = { this.state.phase}
-            />   
-            
-            <Controller 
-                status = { this.onButtonClick }
-                statusLabel = { this.state.status }
-                button = { this.state.button }
-            /> 
+                <SliderInput 
+                    focusTime = { this.onfocusTimeChange }
+                    restTime = { this.onrestTimeChange }
+                    phase = { this.state.phase}
+                    statusLabel = { this.state.status }
+                />   
+                
+                <Controller 
+                    status = { this.onButtonClick }
+                    statusLabel = { this.state.status }
+                    button = { this.state.button }
+                /> 
 
             
         
-        </div >
-        <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
-        <small class="f7 db tc white text-font"> made with <span>&hearts;</span> by <a className = "white" href="https://github.com/tristanjoshuaalba">tristan</a> </small>
-        <small class="f7 db tc white text-font"> 2020-10-23 </small>
-
-        </footer>
+            </div >
+            <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+                <small class="f6 db tc color-salmon text-font"> made with <span>&hearts;</span> by <a className = "color-salmon" href="https://github.com/tristanjoshuaalba">tristan</a> </small>
+            </footer>
         </div>
         )
     }
@@ -220,36 +217,3 @@ class App extends Component {
 
 
 export default App;
-
-
-
-
-// onButtonClick = () => {
-
-
-//   if(this.state.status == false){
-
-//     this.setState({phase:'focus'}, ()=> console.log(this.state.phase))
-//     this.setState({status: true}, ()=> console.log(this.state.status))
-
-
-//     this.clockTickFocus(this.state.focusTime)
-
-//     setTimeout(()=>{
-//       this.clockTickRest(this.state.restTime)
-//       this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-
-//     }, this.state.focusTime*1000)
-
-//   } else {
-//     this.setState({phase:'rest'}, ()=> console.log(this.state.phase))
-//     this.setState({status: false}, ()=> console.log(this.state.status))
-//   }
-// }
-
-
-// <div class="tc mt3">
-// <a href="/language/" title="Language" class="f6 dib ph2 link mid-gray dim">Language</a>
-// <a href="/terms/"    title="Terms" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
-// <a href="/privacy/"  title="Privacy" class="f6 dib ph2 link mid-gray dim">Privacy</a>
-// </div>

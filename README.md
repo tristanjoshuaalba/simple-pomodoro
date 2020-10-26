@@ -4,10 +4,10 @@
 This repository contains files for the simple pomodoro app created using React JS
 
 ## Usage
-1. Use the slider to modify CONCENTRATE and REST time settings
-2. Click the START button to begin CONCENTRATE Phase
+1. Use the slider to modify **CONCENTRATE** and **REST** time settings
+2. Click the **START** button to begin **CONCENTRATE** Phase
 
-**Note:** The app will automatically proceed to the REST Phase once the CONCENTRATE Phase is done. 
+**Note:** The app will automatically proceed to the **REST** Phase once the **CONCENTRATE** Phase is done. 
 
 ## Screenshots
 ![Simple Pomodoro Main Screen](./simple-pomodoro-demo-1.png "Main Screen")

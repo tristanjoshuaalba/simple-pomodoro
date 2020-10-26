@@ -10,7 +10,7 @@ A responsive pomodoro timer app created using React JS
 **Note:** The app will automatically proceed to the `REST` Phase once the `CONCENTRATE` Phase is done. 
 
 ## Screenshots
-![Simple Pomodoro Main Screen](./demo/simple-pomodoro-demo-1.png "Main Screen")
+<img alt="Main Screen" src = "./demo/simple-pomodoro-demo-1.png" width = "99%" height = "99%">
 <img alt= "Concentrate Phase" src = "./demo/simple-pomodoro-demo-2.png" width = "49%" height = "49%"> <img alt= "Rest Phase" src = "./demo/simple-pomodoro-demo-3.png" width = "49%" height = "49%">
 <img alt= "Countdown Complete" src = "./demo/simple-pomodoro-demo-4.png" width = "49%" height = "49%"> <img alt= "Cycle Count Added" src = "./demo/simple-pomodoro-demo-5.png" width = "49%" height = "49%">
 

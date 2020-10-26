@@ -11,8 +11,8 @@ This repository contains files for the simple pomodoro app created using React J
 
 ## Screenshots
 ![Simple Pomodoro Main Screen](./simple-pomodoro-demo-1.png "Main Screen")
-<img alt= "Concentrate Phase" src = "./simple-pomodoro-demo-2.png" width = "48%" height = "48%"> <img alt= "Rest Phase" src = "./simple-pomodoro-demo-3.png" width = "50%" height = "50%">
-<img alt= "Countdown Complete" src = "./simple-pomodoro-demo-4.png" width = "48%" height = "48%"> <img alt= "Cycle Count Added" src = "./simple-pomodoro-demo-5.png" width = "50%" height = "50%">
+<img alt= "Concentrate Phase" src = "./simple-pomodoro-demo-2.png" width = "48%" height = "48%"> <img alt= "Rest Phase" src = "./simple-pomodoro-demo-3.png" width = "48%" height = "48%">
+<img alt= "Countdown Complete" src = "./simple-pomodoro-demo-4.png" width = "48%" height = "48%"> <img alt= "Cycle Count Added" src = "./simple-pomodoro-demo-5.png" width = "48%" height = "48%">
 
 ## Live Demo
 The Simple Pomodoro React App is live here: [http://simple-pomodoro.decoroustea.xyz/](http://simple-pomodoro.decoroustea.xyz/)

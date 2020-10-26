@@ -15,7 +15,7 @@ A responsive pomodoro timer app created using React JS
 <!-- <img alt= "Concentrate Phase" src = "./demo/simple-pomodoro-demo-2.png" width = "49%" height = "49%"> <img alt= "Rest Phase" src = "./demo/simple-pomodoro-demo-3.png" width = "49%" height = "49%">
 <img alt= "Countdown Complete" src = "./demo/simple-pomodoro-demo-4.png" width = "49%" height = "49%"> <img alt= "Cycle Count Added" src = "./demo/simple-pomodoro-demo-5.png" width = "49%" height = "49%"> -->
 
-<img alt= "Responsive" src = "./demo/simple-pomodoro-demo-6.png" width = "80%" height = "80%"> 
+<img alt= "Responsive" src = "./demo/simple-pomodoro-demo-6.png" width = "40%" height = "40%"> 
 
 ## Live Demo
 The Simple Pomodoro React App is live here: [http://simple-pomodoro.decoroustea.xyz/](http://simple-pomodoro.decoroustea.xyz/)

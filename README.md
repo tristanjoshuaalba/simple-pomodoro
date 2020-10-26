@@ -3,9 +3,14 @@
 ## Description
 A responsive pomodoro timer app created using React JS
 
+## Technologies/Libraries Used
+- [ReactJS v17.0.1](https://reactjs.org/)
+- [Material-UI v4.11.0](https://material-ui.com/)
+- [Tachyons v4.12.0](https://tachyons.io/)
+
 ## How To Use
 1. Use the slider to modify `CONCENTRATE` and  `REST` time settings
-2. Click the   `START` button to begin `CONCENTRATE` Phase
+2. Click the `START` button to begin `CONCENTRATE` Phase
 
 **Note:** The app will automatically proceed to the `REST` Phase once the `CONCENTRATE` Phase is done. 
 

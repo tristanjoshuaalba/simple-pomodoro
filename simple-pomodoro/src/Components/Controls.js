@@ -19,7 +19,7 @@ const Controller = ({status, reset, statusLabel, button}) => {
             </div>
         )
     } else {
-        label = 'pause'
+        label = 'Start'
         return ( 
        
             <div className = 'center tc w-75'>
